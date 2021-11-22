@@ -1,6 +1,6 @@
 ---
 - name: Check status of Site24x7 server monitoring agent
-  hosts: hostname
+  hosts: all
   remote_user: root
   tasks:
      - name: Checking status of Site24x7 monitoring agent
