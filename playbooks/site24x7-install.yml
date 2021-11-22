@@ -1,6 +1,7 @@
 ---
 - name: Install Site24x7 server monitoring agent
   hosts: all          ##Change this value to select desired hosts
+  become_method: sudo
   #remote_user: root
   
   vars:
