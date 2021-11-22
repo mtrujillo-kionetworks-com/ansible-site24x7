@@ -55,6 +55,7 @@
          dest: /opt/Site24x7_Linux_32bit.install
          mode: 0750
        register: copyAgent32
+       ignore_errors: yes
        when: ansible_machine == "i386" and not installed.stat.exists 
      
      #- name: Download 32 bit Site24x7 agent from public URL
@@ -80,9 +81,11 @@
        file: 
          state: absent
          path: /opt/Site24x7_Linux_64bit.install
+       ignore_errors: yes
        when: ansible_machine == "x86_64" and not installed.stat.exists
      - name: Deleting 32 bit install file
        file: 
          state: absent
          path: /opt/Site24x7_Linux_32bit.install
+       ignore_errors: yes
        when: ansible_machine == "i386"
