@@ -1,6 +1,7 @@
 ---
 - name: Uninstall Site24x7 Linux Server Monitoring Agent
   hosts: all          ##Change this value to select desired hosts
+  become_method: sudo
   #remote_user: root
   
   tasks:
