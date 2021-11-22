@@ -1,6 +1,7 @@
 ---
 - name: Restart Site24x7 server monitoring agent
   hosts: all
+  become_method: sudo
   
   tasks:
      - name: Restart Site24x7 monitoring agent
