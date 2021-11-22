@@ -39,8 +39,15 @@
      
      
      
-     - service: name=site24x7monagent state=restarted
+     #- service: name=site24x7monagent state=restarted
+       #when: ansible_machine == "x86_64" and not installed.stat.exists
+
+     - name: Restart Agent64 Site24x7
+       shell: |
+         /etc/init.d/site24x7monagent restart
+       register: restartAgent64
        when: ansible_machine == "x86_64" and not installed.stat.exists
+       
 
      - name: Copy 32 bit Site24x7 agent to client host
        copy:
@@ -66,9 +73,14 @@
        ignore_errors: yes
        when: (ansible_machine == "i386" and proxy != "NONE" and not installed.stat.exists)
      
-     - service: name=site24x7monagent state=restarted
-       when: ansible_machine == "i386" and not installed.stat.exists
-     
+     #- service: name=site24x7monagent state=restarted
+       #when: ansible_machine == "i386" and not installed.stat.exists
+
+     - name: Restart Agent32 Site24x7
+       shell: |
+         /etc/init.d/site24x7monagent restart
+       register: restartAgent64
+       when: ansible_machine == "i386" and not installed.stat.exists 
      
      - name: Deleting 64 bit install file
        file: 
