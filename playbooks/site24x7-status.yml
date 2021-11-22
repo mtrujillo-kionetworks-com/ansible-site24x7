@@ -1,6 +1,7 @@
 ---
 - name: Check status of Site24x7 server monitoring agent
   hosts: all
+  become_method: sudo
   
   tasks:
      - name: Checking status of Site24x7 monitoring agent
