@@ -5,6 +5,9 @@
   
   tasks:
      - name: Restart Site24x7 monitoring agent
-       shell: /etc/init.d/site24x7monagent restart
+       #shell: /etc/init.d/site24x7monagent restart
+       service: 
+        name: site24x7monagent 
+        state: restarted
        register: checkInstallSite24x7
        ignore_errors: yes
